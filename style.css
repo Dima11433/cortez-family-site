@@ -614,6 +614,69 @@ a:hover {
   transform: translateX(3px);
 }
 
+/* Hero Socials Bar */
+.hero-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  z-index: 10;
+}
+
+.hero-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(18, 22, 34, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.hero-social-link:hover {
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.hero-social-link.discord-pill:hover {
+  background: rgba(88, 101, 242, 0.25);
+  border-color: #5865F2;
+  box-shadow: 0 4px 16px rgba(88, 101, 242, 0.35);
+}
+
+.hero-social-link.youtube-pill:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: #ff3333;
+  box-shadow: 0 4px 16px rgba(255, 0, 0, 0.3);
+}
+
+.hero-social-link.telegram-pill:hover {
+  background: rgba(34, 158, 217, 0.22);
+  border-color: #229ED9;
+  box-shadow: 0 4px 16px rgba(34, 158, 217, 0.3);
+}
+
+.hero-social-link.news-pill:hover {
+  background: rgba(255, 183, 51, 0.2);
+  border-color: var(--gold-accent);
+  box-shadow: 0 4px 16px rgba(255, 183, 51, 0.3);
+}
+
+.hero-social-link.twitch-pill:hover {
+  background: rgba(145, 70, 255, 0.22);
+  border-color: #9146FF;
+  box-shadow: 0 4px 16px rgba(145, 70, 255, 0.3);
+}
+
 /* Scroll Hint */
 .scroll-hint {
   display: inline-flex;
@@ -1716,7 +1779,238 @@ a:hover {
 }
 
 /* ==========================================================================
-   5. SECTION: КОДЕКС ЧЕСТИ / CODE OF HONOR
+   5. SECTION: СПЕЦСВЯЗЬ & МЕДИА / SOCIALS & MEDIA HUB
+   ========================================================================== */
+
+.section-socials {
+  background: radial-gradient(circle at 50% 50%, rgba(88, 101, 242, 0.04) 0%, transparent 70%),
+              linear-gradient(180deg, #07090e 0%, #0d1017 50%, #07090e 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.socials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: var(--text-main);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.social-card:hover {
+  transform: translateY(-6px);
+}
+
+.social-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+/* Card Discord */
+.social-card.card-discord:hover {
+  border-color: rgba(88, 101, 242, 0.6);
+  box-shadow: 0 16px 36px rgba(88, 101, 242, 0.2);
+}
+.social-card.card-discord::before {
+  background: #5865F2;
+}
+.icon-discord {
+  color: #5865F2;
+  background: rgba(88, 101, 242, 0.12);
+  border: 1px solid rgba(88, 101, 242, 0.3);
+}
+
+/* Card YouTube */
+.social-card.card-youtube:hover {
+  border-color: rgba(255, 0, 0, 0.55);
+  box-shadow: 0 16px 36px rgba(255, 0, 0, 0.18);
+}
+.social-card.card-youtube::before {
+  background: #FF0000;
+}
+.icon-youtube {
+  color: #FF0000;
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* Card Telegram */
+.social-card.card-telegram:hover {
+  border-color: rgba(34, 158, 217, 0.6);
+  box-shadow: 0 16px 36px rgba(34, 158, 217, 0.2);
+}
+.social-card.card-telegram::before {
+  background: #229ED9;
+}
+.icon-telegram {
+  color: #229ED9;
+  background: rgba(34, 158, 217, 0.12);
+  border: 1px solid rgba(34, 158, 217, 0.3);
+}
+
+/* Card Evening Cortez (News) */
+.social-card.card-news:hover {
+  border-color: rgba(255, 183, 51, 0.65);
+  box-shadow: 0 16px 36px rgba(255, 183, 51, 0.22);
+}
+.social-card.card-news::before {
+  background: var(--gold-accent);
+}
+.icon-news {
+  color: var(--gold-accent);
+  background: rgba(255, 183, 51, 0.14);
+  border: 1px solid rgba(255, 183, 51, 0.35);
+}
+
+/* Card Twitch */
+.social-card.card-twitch:hover {
+  border-color: rgba(145, 70, 255, 0.6);
+  box-shadow: 0 16px 36px rgba(145, 70, 255, 0.2);
+}
+.social-card.card-twitch::before {
+  background: #9146FF;
+}
+.icon-twitch {
+  color: #9146FF;
+  background: rgba(145, 70, 255, 0.12);
+  border: 1px solid rgba(145, 70, 255, 0.3);
+}
+
+.social-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.social-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.social-badge.badge-gold {
+  background: rgba(255, 183, 51, 0.15);
+  color: var(--gold-accent);
+  border: 1px solid rgba(255, 183, 51, 0.3);
+}
+
+.social-card-title {
+  font-family: var(--font-accent);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-headline);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.social-card-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+.social-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--link-cream);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  transition: gap 0.2s, color 0.2s;
+}
+
+.social-card:hover .social-card-cta {
+  color: #fff;
+  gap: 12px;
+}
+
+.social-card-cta svg {
+  transition: transform 0.2s ease;
+}
+
+.social-card:hover .social-card-cta svg {
+  transform: translateX(3px);
+}
+
+/* Success Discord Button in Apply Form */
+.apply-success-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.success-discord-btn {
+  background: #5865F2 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.success-discord-btn:hover {
+  background: #4752c4 !important;
+  box-shadow: 0 8px 24px rgba(88, 101, 242, 0.4);
+}
+
+.form-reset-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-reset-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* ==========================================================================
+   6. SECTION: КОДЕКС ЧЕСТИ / CODE OF HONOR
    ========================================================================== */
 
 .code-grid {
@@ -2088,7 +2382,8 @@ a:hover {
 
 .footer-links-group {
   display: flex;
-  gap: clamp(40px, 6vw, 80px);
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 60px);
 }
 
 .footer-col h4 {
@@ -2382,6 +2677,10 @@ a:hover {
   }
 
   .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .socials-grid {
     grid-template-columns: 1fr;
   }
 
