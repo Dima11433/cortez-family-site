@@ -34,12 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
         this.speedX = (Math.random() - 0.5) * 0.8;
         this.alpha = Math.random() * 0.7 + 0.2;
         this.fade = Math.random() * 0.006 + 0.003;
-        // Ember palette: Crimson Red, Flame Coral, Amber Fire
+        // Cyber Neon palette matching FLORY Panther: Magenta, Violet, Electric Purple, White Spark
         const colors = [
-          '255, 42, 84',   // #FF2A54
-          '255, 94, 126',  // #FF5E7E
-          '255, 159, 67',  // #FF9F43
-          '255, 209, 102'  // Amber flame
+          '217, 70, 239',  // #D946EF Neon Magenta
+          '224, 36, 195',  // #E024C3 Hot Pink Magenta
+          '168, 85, 247',  // #A855F7 Electric Violet
+          '147, 51, 234',  // #9333EA Cyber Purple
+          '240, 171, 252', // Soft Glow Violet
+          '255, 255, 255'  // Spark highlight
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }

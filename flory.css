@@ -5,28 +5,28 @@
 
 :root {
   /* Core Colors */
-  --bg-deep: #060406;
-  --bg-dark: #0a070b;
-  --bg-surface: #120b14;
-  --bg-card: rgba(18, 11, 20, 0.78);
-  --bg-card-hover: rgba(28, 15, 30, 0.9);
+  --bg-deep: #050308;
+  --bg-dark: #0a0610;
+  --bg-surface: #12091c;
+  --bg-card: rgba(18, 9, 28, 0.78);
+  --bg-card-hover: rgba(28, 14, 44, 0.9);
 
-  --text-main: #f0edf2;
+  --text-main: #f5edf8;
   --text-headline: #ffffff;
-  --text-muted: rgba(240, 237, 242, 0.72);
-  --text-subtle: rgba(240, 237, 242, 0.45);
+  --text-muted: rgba(245, 237, 248, 0.72);
+  --text-subtle: rgba(245, 237, 248, 0.45);
 
-  /* Phoenix Crimson & Flame Accents */
-  --accent-primary: #FF2A54;
-  --accent-secondary: #FF5E7E;
-  --accent-amber: #FF9F43;
-  --accent-glow: rgba(255, 42, 84, 0.38);
-  --accent-light: #ffe5ec;
-  --link-crimson: #ffb3c1;
+  /* Cyber Neon Violet & Magenta Accents (from FLORY Official Panther) */
+  --accent-primary: #D946EF;
+  --accent-secondary: #E024C3;
+  --accent-purple: #9333EA;
+  --accent-glow: rgba(217, 70, 239, 0.42);
+  --accent-light: #fae8ff;
+  --link-crimson: #f0abfc;
 
   --border-glass: rgba(255, 255, 255, 0.12);
   --border-glass-hover: rgba(255, 255, 255, 0.3);
-  --border-accent: rgba(255, 42, 84, 0.35);
+  --border-accent: rgba(217, 70, 239, 0.38);
 
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-accent: 'Cinzel', Georgia, serif;
@@ -391,6 +391,27 @@ img, video {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hero-brand-centerpiece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.hero-crest-img {
+  width: clamp(140px, 20vw, 220px);
+  height: clamp(140px, 20vw, 220px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(217, 70, 239, 0.55)) drop-shadow(0 12px 36px rgba(0, 0, 0, 0.95));
+  animation: heroFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes heroFloat {
+  0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 24px rgba(217, 70, 239, 0.45)); }
+  100% { transform: translateY(-8px) scale(1.02); filter: drop-shadow(0 0 38px rgba(217, 70, 239, 0.75)); }
 }
 
 .hero-ornament {
