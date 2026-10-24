@@ -222,39 +222,87 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 5. MAIN APPLICATION FORM (RECRUITING)
+  // 5. MAIN APPLICATION FORM (RECRUITING: FAMILY & RP STACK TABS)
   // ------------------------------------------------------------------------
   const appForm = document.getElementById('application-form');
   const appSuccess = document.getElementById('apply-success');
   const resetFormBtn = document.getElementById('reset-form-btn');
+  const tabFamily = document.getElementById('tab-family');
+  const tabRp = document.getElementById('tab-rp');
+  const ganggameGroup = document.getElementById('ganggame-group');
+  const ganggameInput = document.getElementById('ganggame-rollback');
+  const formTypeInput = document.getElementById('form-type');
+
+  // Tab switching: Family vs RP Stack
+  if (tabFamily && tabRp) {
+    tabFamily.addEventListener('click', () => {
+      tabFamily.classList.add('active');
+      tabFamily.setAttribute('aria-selected', 'true');
+      tabRp.classList.remove('active');
+      tabRp.setAttribute('aria-selected', 'false');
+
+      if (formTypeInput) formTypeInput.value = 'family';
+      if (ganggameGroup) ganggameGroup.style.display = 'flex';
+      if (ganggameInput) ganggameInput.setAttribute('required', '');
+    });
+
+    tabRp.addEventListener('click', () => {
+      tabRp.classList.add('active');
+      tabRp.setAttribute('aria-selected', 'true');
+      tabFamily.classList.remove('active');
+      tabFamily.setAttribute('aria-selected', 'false');
+
+      if (formTypeInput) formTypeInput.value = 'rp';
+      if (ganggameGroup) ganggameGroup.style.display = 'none';
+      if (ganggameInput) ganggameInput.removeAttribute('required');
+    });
+  }
 
   if (appForm && appSuccess) {
     appForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const charName = document.getElementById('char-name').value;
-      const staticId = document.getElementById('static-id').value;
-      const serverName = document.getElementById('server-name').value;
-      const discordTag = document.getElementById('discord-tag').value;
-      const realAge = document.getElementById('real-age').value;
-      const shootingSkill = document.getElementById('shooting-skill').value;
-      const prevFamilies = document.getElementById('prev-families').value || 'Не указано';
+      const formType = formTypeInput ? formTypeInput.value : 'family';
+      const charAge = document.getElementById('char-age').value;
+      const discordContact = document.getElementById('discord-contact').value;
+      const screenshotCharacters = document.getElementById('screenshot-characters').value;
+      const familyHistory = document.getElementById('family-history').value;
+      const activityTime = document.getElementById('activity-time').value;
+      const staticId = document.getElementById('static-id-contact')?.value || '';
+      const ganggameRollback = ganggameInput ? ganggameInput.value : '';
 
-      const discordReport = 
-`👑 **ЗАЯВКА В СЕМЬЮ CORTEZ (MAJESTIC RP)**
+      let discordReport = '';
+
+      if (formType === 'family') {
+        discordReport = 
+`⚔️ **ЗАЯВКА В СЕМЬЮ CORTEZ (CORTEZBOT)**
 ━━━━━━━━━━━━━━━━━━━━━━
-👤 **Имя / Static ID:** ${charName} (${staticId})
-🌐 **Сервер:** ${serverName}
-💬 **Discord:** ${discordTag}
-🎂 **Возраст (OOC):** ${realAge} лет
-🎯 **Стрельба / Опыт каптов:** ${shootingSkill}
-📜 **Прошлые фракции/семьи:** ${prevFamilies}
+🌐 **Сервер:** Server #19 — Memphis
+🎂 **Возраст:** ${charAge} лет
+💬 **Discord:** ${discordContact}
+📸 **Скриншот персонажей:** ${screenshotCharacters}
+📜 **История семей:** ${familyHistory}
+🎯 **Откат с гангейма (тяжка/спешик):** ${ganggameRollback}
+⏰ **Активность (прайм-тайм и суточный онлайн):** ${activityTime}
+${staticId ? `🆔 **Static ID:** ${staticId}\n` : ''}━━━━━━━━━━━━━━━━━━━━━━
+*Форма отправлена через приложение CortezBOT*`;
+      } else {
+        discordReport = 
+`🎭 **ЗАЯВКА В РП СТАК CORTEZ (CORTEZBOT)**
 ━━━━━━━━━━━━━━━━━━━━━━
-*Статус: Ожидает проверки рекрутерами*`;
+🌐 **Сервер:** Server #19 — Memphis
+🎂 **Возраст:** ${charAge} лет
+💬 **Discord:** ${discordContact}
+📸 **Скриншот персонажей:** ${screenshotCharacters}
+📜 **История семей:** ${familyHistory}
+⏰ **Активность (прайм-тайм и суточный онлайн):** ${activityTime}
+${staticId ? `🆔 **Static ID:** ${staticId}\n` : ''}━━━━━━━━━━━━━━━━━━━━━━
+*Форма отправлена через приложение CortezBOT*`;
+      }
 
       if (navigator.clipboard) {
         navigator.clipboard.writeText(discordReport).then(() => {
-          showToast('Текст заявки скопирован в буфер для Discord!');
+          showToast('Заявка скопирована в буфер для CortezBOT / Discord!');
         }).catch(() => {
           showToast('Заявка успешно сформирована!');
         });

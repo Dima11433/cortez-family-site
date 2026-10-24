@@ -416,87 +416,74 @@
       <div class="apply-box">
         
         <div class="apply-header">
-          <div class="badge-tag">РЕКРУТИНГ</div>
-          <h2 class="section-title">СТАНЬ ЧАСТЬЮ <span>CORTEZ</span></h2>
-          <p class="section-lead">Заполни заявку на вступление. Ответ куратора рекрутинга придет в течение 2-х часов в Discord.</p>
+          <div class="badge-tag">РЕКРУТИНГ · CORTEZBOT</div>
+          <h2 class="section-title">ЗАЯВКА НА ВСТУПЛЕНИЕ В <span>СЕМЬЮ</span></h2>
+          <p class="section-lead">Выберите направление и заполните официальную форму для проверки ботом <strong>CortezBOT</strong> на сервере #19 Memphis.</p>
+        </div>
+
+        <!-- Application Type Switcher Tabs -->
+        <div class="apply-tabs" role="tablist">
+          <button type="button" class="apply-tab-btn active" id="tab-family" data-type="family" role="tab" aria-selected="true">
+            ⚔️ Заявка в семью
+          </button>
+          <button type="button" class="apply-tab-btn" id="tab-rp" data-type="rp" role="tab" aria-selected="false">
+            🎭 Заявка в РП стак
+          </button>
+        </div>
+
+        <!-- CortezBOT Warning Notice (Exact from Discord modal) -->
+        <div class="bot-notice">
+          <span class="bot-notice-icon">⚠️</span>
+          <div>
+            <strong>Эта форма будет получена приложением CortezBOT.</strong><br>
+            Не указывайте свои пароли и прочую конфиденциальную информацию.
+          </div>
         </div>
 
         <form class="apply-form" id="application-form">
+          <input type="hidden" id="form-type" name="formType" value="family">
           
           <div class="form-row">
             <div class="form-group">
-              <label for="char-name">Имя и Фамилия персонажа (IC)</label>
-              <input type="text" id="char-name" name="charName" placeholder="например: Alejandro_Cortez" required>
+              <label for="char-age">Возраст *</label>
+              <input type="number" id="char-age" name="charAge" placeholder="Укажите ваш возраст (число)" min="13" max="50" required>
             </div>
             <div class="form-group">
-              <label for="static-id">Static ID на Majestic RP</label>
-              <input type="text" id="static-id" name="staticId" placeholder="например: #184290" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="server-name">Сервер Majestic RP</label>
-              <select id="server-name" name="serverName" required>
-                <option value="Server #19 - Memphis" selected>Server #19 — Memphis</option>
-                <option value="Server #1 - New York">Server #1 — New York</option>
-                <option value="Server #2 - Detroit">Server #2 — Detroit</option>
-                <option value="Server #3 - Chicago">Server #3 — Chicago</option>
-                <option value="Server #4 - San Francisco">Server #4 — San Francisco</option>
-                <option value="Server #5 - Atlanta">Server #5 — Atlanta</option>
-                <option value="Server #6 - San Diego">Server #6 — San Diego</option>
-                <option value="Server #7 - Los Angeles">Server #7 — Los Angeles</option>
-                <option value="Server #8 - Miami">Server #8 — Miami</option>
-                <option value="Server #9 - Las Vegas">Server #9 — Las Vegas</option>
-                <option value="Server #10 - Washington">Server #10 — Washington</option>
-                <option value="Server #11 - Dallas">Server #11 — Dallas</option>
-                <option value="Server #12 - Boston">Server #12 — Boston</option>
-                <option value="Server #13 - Seattle">Server #13 — Seattle</option>
-                <option value="Server #14 - Houston">Server #14 — Houston</option>
-                <option value="Server #15 - Phoenix">Server #15 — Phoenix</option>
-                <option value="Server #16 - Philadelphia">Server #16 — Philadelphia</option>
-                <option value="Server #17 - Denver">Server #17 — Denver</option>
-                <option value="Server #18 - Portland">Server #18 — Portland</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="discord-tag">Ваш Discord (Тег или логин)</label>
-              <input type="text" id="discord-tag" name="discordTag" placeholder="например: cortez_gunner" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="real-age">Реальный возраст (OOC)</label>
-              <input type="number" id="real-age" name="realAge" min="14" max="50" placeholder="18" required>
-            </div>
-            <div class="form-group">
-              <label for="shooting-skill">Уровень стрельбы / Опыт в каптах (1 - 10)</label>
-              <select id="shooting-skill" name="shootingSkill" required>
-                <option value="10/10">10 / 10 — Опытный турнирный каптер</option>
-                <option value="8-9/10" selected>8-9 / 10 — Уверенная стрельба, играю дропы</option>
-                <option value="6-7/10">6-7 / 10 — Средний уровень, готов тренироваться</option>
-                <option value="Поддержка / RP">Играю RP / Логистика / Фарм поставок</option>
-              </select>
+              <label for="discord-contact">Ваш Discord для связи *</label>
+              <input type="text" id="discord-contact" name="discordContact" placeholder="например: cortez_gunner" required>
             </div>
           </div>
 
           <div class="form-group full-width">
-            <label for="prev-families">В каких семьях / фракциях состояли ранее?</label>
-            <textarea id="prev-families" name="prevFamilies" rows="3" placeholder="Укажите ваш прошлый опыт на Majestic RP и причину ухода..."></textarea>
+            <label for="screenshot-characters">Скриншот персонажей *</label>
+            <input type="url" id="screenshot-characters" name="screenshotCharacters" placeholder="Вставьте ссылку на скриншот персонажей (Imgur, Yapx, Lightshot)" required>
           </div>
 
-          <div class="form-actions">
-            <button type="submit" class="primary-btn submit-btn">
-              <span>Отправить заявку</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 12h15"></path>
-                <path d="M13.5 5.5 20 12l-6.5 6.5"></path>
-              </svg>
-            </button>
-            <div class="form-note">
-              Нажимая кнопку, вы соглашаетесь с внутренним <a href="#code">Кодексом семьи Cortez</a>.
-            </div>
+          <div class="form-group full-width">
+            <label for="family-history">История семей *</label>
+            <textarea id="family-history" name="familyHistory" rows="3" placeholder="Опишите вашу историю семей" required></textarea>
+          </div>
+
+          <!-- Ganggame Rollback (Only for Family / Основной состав) -->
+          <div class="form-group full-width" id="ganggame-group">
+            <label for="ganggame-rollback">Откат с гангейма(тяжка/спешик) *</label>
+            <input type="url" id="ganggame-rollback" name="ganggameRollback" placeholder="Ссылка на откаты: >=5 минут, минимум 10 человек в лобби" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="activity-time">Активность (прайм–тайм и суточный онлайн) *</label>
+            <input type="text" id="activity-time" name="activityTime" placeholder="Например: Прайм-тайм: 18:00-23:00, Суточный онлайн: 4-6 часов" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="static-id-contact">Static ID на сервере #19 Memphis (IC)</label>
+            <input type="text" id="static-id-contact" name="staticId" placeholder="например: #184290 (необязательно)">
+          </div>
+
+          <!-- Discord-style Action Buttons (Cancel + Send) -->
+          <div class="discord-actions">
+            <button type="reset" class="discord-cancel-btn" id="form-cancel-btn">Отмена</button>
+            <button type="submit" class="discord-submit-btn">Отправить</button>
           </div>
 
         </form>
@@ -504,10 +491,10 @@
         <!-- Success Message (Initially Hidden) -->
         <div class="apply-success" id="apply-success" style="display: none;">
           <div class="success-icon">✦</div>
-          <h3>Заявка успешно принята!</h3>
+          <h3 id="success-title">Заявка успешно сформирована!</h3>
           <p>
-            Данные скопированы в буфер обмена. Мы уже уведомили рекрутеров семьи <strong>Cortez</strong>.<br>
-            Ожидайте сообщения в Discord от руководства в ближайшее время.
+            Данные отправлены и скопированы в буфер обмена для <strong>CortezBOT</strong>.<br>
+            Вставьте их в канал заявок или ожидайте сообщения от куратора в Discord.
           </p>
           <button type="button" class="primary-btn" id="reset-form-btn">Подать еще одну заявку</button>
         </div>

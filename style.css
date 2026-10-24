@@ -1246,7 +1246,111 @@ a:hover {
 
 .apply-header {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
+}
+
+/* Application Tabs (Family vs RP Stack) */
+.apply-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.apply-tab-btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.apply-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.apply-tab-btn.active {
+  background: var(--gold-accent);
+  color: #000;
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 20px rgba(255, 183, 51, 0.35);
+}
+
+/* CortezBOT Warning Notice (Exact from Discord modal) */
+.bot-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(240, 178, 50, 0.1);
+  border: 1px solid rgba(240, 178, 50, 0.45);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  color: #ffd666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bot-notice strong {
+  color: #ffe58f;
+}
+
+.bot-notice-icon {
+  font-size: 16px;
+  margin-top: 1px;
+}
+
+/* Discord Actions (Cancel + Send) */
+.discord-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.discord-cancel-btn {
+  padding: 13px 28px;
+  background: #4e5058;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.discord-cancel-btn:hover {
+  background: #6d6f78;
+}
+
+.discord-submit-btn {
+  padding: 13px 34px;
+  background: #5865f2;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.discord-submit-btn:hover {
+  background: #4752c4;
+  transform: translateY(-1px);
 }
 
 .apply-form {
