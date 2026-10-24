@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     copyPromoBtn.addEventListener('click', () => {
       const code = 'FLORY';
       navigator.clipboard.writeText(code).then(() => {
-        showToast(`Промокод "${code}" скопирован в буфер!`);
+        showToast(`Промокод "${code}" скопирован! (В игре: /promo ${code})`);
         copyPromoBtn.style.transform = 'scale(0.96)';
         setTimeout(() => {
           copyPromoBtn.style.transform = '';
