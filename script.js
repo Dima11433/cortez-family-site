@@ -1,0 +1,294 @@
+/* ==========================================================================
+   CORTEZ FAMILY — MAJESTIC RP INTERACTIVE SCRIPT
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ------------------------------------------------------------------------
+  // 1. VIDEO AUTOPLAY GUARANTEE (Exact Prompt Requirements)
+  // ------------------------------------------------------------------------
+  const v = document.querySelector('video');
+  if (v) {
+    v.muted = true;
+    v.src = 'https://cdn.sceneai.art/Hero%20section%20video%20file%20(2)/1aafa16f-30a9-48c5-8964-78cffbad914e.mp4';
+    v.play().catch(() => {});
+    v.addEventListener('pause', () => v.play().catch(() => {}));
+  }
+
+  // ------------------------------------------------------------------------
+  // 2. SUBTLE FLOATING AMBIENT PARTICLES (CANVAS)
+  // ------------------------------------------------------------------------
+  const canvas = document.getElementById('ambient-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 28;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        speedY: Math.random() * 0.4 + 0.15,
+        speedX: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.5 + 0.2,
+        pulseSpeed: Math.random() * 0.02 + 0.01,
+        color: Math.random() > 0.4 ? 'rgba(255, 183, 51, ' : 'rgba(242, 239, 231, '
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.y -= p.speedY;
+        p.x += p.speedX;
+        p.opacity += Math.sin(Date.now() * 0.002 + i) * 0.005;
+
+        if (p.y < -10) {
+          p.y = height + 10;
+          p.x = Math.random() * width;
+        }
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+
+        const currentOpacity = Math.max(0.1, Math.min(0.65, p.opacity));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + currentOpacity + ')';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  }
+
+  // ------------------------------------------------------------------------
+  // 3. MOBILE MENU TOGGLE
+  // ------------------------------------------------------------------------
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 4. QUICK MODAL DIALOG (<dialog>)
+  // ------------------------------------------------------------------------
+  const quickDialog = document.getElementById('quick-dialog');
+  const openApplyBtn = document.getElementById('open-apply-btn');
+  const modalClose = document.getElementById('modal-close');
+  const modalForm = document.getElementById('modal-form');
+  const modalSuccess = document.getElementById('modal-success');
+
+  if (quickDialog && openApplyBtn) {
+    openApplyBtn.addEventListener('click', () => {
+      quickDialog.showModal();
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener('click', () => {
+        quickDialog.close();
+      });
+    }
+
+    // Light dismiss: Close on outside backdrop click
+    quickDialog.addEventListener('click', (e) => {
+      const rect = quickDialog.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        quickDialog.close();
+      }
+    });
+
+    if (modalForm) {
+      modalForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('m-name').value;
+        const discord = document.getElementById('m-discord').value;
+        const server = document.getElementById('m-server').value;
+
+        const summary = `📋 Быстрая заявка в CORTEZ:\n• Игрок: ${name}\n• Discord: ${discord}\n• Сервер: ${server}`;
+        navigator.clipboard?.writeText(summary).catch(() => {});
+
+        modalForm.style.display = 'none';
+        modalSuccess.style.display = 'block';
+        showToast('Контакты скопированы и отправлены!');
+
+        setTimeout(() => {
+          quickDialog.close();
+          setTimeout(() => {
+            modalForm.reset();
+            modalForm.style.display = 'flex';
+            modalSuccess.style.display = 'none';
+          }, 400);
+        }, 2200);
+      });
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 5. MAIN APPLICATION FORM (RECRUITING)
+  // ------------------------------------------------------------------------
+  const appForm = document.getElementById('application-form');
+  const appSuccess = document.getElementById('apply-success');
+  const resetFormBtn = document.getElementById('reset-form-btn');
+
+  if (appForm && appSuccess) {
+    appForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const charName = document.getElementById('char-name').value;
+      const staticId = document.getElementById('static-id').value;
+      const serverName = document.getElementById('server-name').value;
+      const discordTag = document.getElementById('discord-tag').value;
+      const realAge = document.getElementById('real-age').value;
+      const shootingSkill = document.getElementById('shooting-skill').value;
+      const prevFamilies = document.getElementById('prev-families').value || 'Не указано';
+
+      const discordReport = 
+`👑 **ЗАЯВКА В СЕМЬЮ CORTEZ (MAJESTIC RP)**
+━━━━━━━━━━━━━━━━━━━━━━
+👤 **Имя / Static ID:** ${charName} (${staticId})
+🌐 **Сервер:** ${serverName}
+💬 **Discord:** ${discordTag}
+🎂 **Возраст (OOC):** ${realAge} лет
+🎯 **Стрельба / Опыт каптов:** ${shootingSkill}
+📜 **Прошлые фракции/семьи:** ${prevFamilies}
+━━━━━━━━━━━━━━━━━━━━━━
+*Статус: Ожидает проверки рекрутерами*`;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(discordReport).then(() => {
+          showToast('Текст заявки скопирован в буфер для Discord!');
+        }).catch(() => {
+          showToast('Заявка успешно сформирована!');
+        });
+      } else {
+        showToast('Заявка принята!');
+      }
+
+      appForm.style.display = 'none';
+      appSuccess.style.display = 'block';
+    });
+
+    if (resetFormBtn) {
+      resetFormBtn.addEventListener('click', () => {
+        appForm.reset();
+        appForm.style.display = 'flex';
+        appSuccess.style.display = 'none';
+      });
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 6. ATMOSPHERIC SOUND AMBIENCE TOGGLE
+  // ------------------------------------------------------------------------
+  const audioToggle = document.getElementById('audio-toggle');
+  const ambientAudio = document.getElementById('ambient-audio');
+
+  if (audioToggle && ambientAudio) {
+    let isPlaying = false;
+    ambientAudio.volume = 0.35;
+
+    audioToggle.addEventListener('click', () => {
+      if (!isPlaying) {
+        ambientAudio.play().then(() => {
+          isPlaying = true;
+          audioToggle.classList.add('playing');
+          showToast('Атмосферный саундтрек включен');
+        }).catch(() => {
+          showToast('Взаимодействуйте с сайтом для включения звука');
+        });
+      } else {
+        ambientAudio.pause();
+        isPlaying = false;
+        audioToggle.classList.remove('playing');
+        showToast('Звук выключен');
+      }
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 7. TOAST NOTIFICATION HELPER
+  // ------------------------------------------------------------------------
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3500);
+  }
+
+  // ------------------------------------------------------------------------
+  // 8. STATS NUMBER COUNTER ON SCROLL
+  // ------------------------------------------------------------------------
+  const statNumbers = document.querySelectorAll('.stat-num[data-count]');
+  let counted = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !counted) {
+        counted = true;
+        statNumbers.forEach(el => {
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          if (isNaN(target)) return;
+
+          let start = 0;
+          const duration = 1500;
+          const stepTime = 30;
+          const steps = duration / stepTime;
+          const increment = target / steps;
+
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+              el.textContent = target + '+';
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(start) + '+';
+            }
+          }, stepTime);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsRow = document.querySelector('.stats-row');
+  if (statsRow) {
+    observer.observe(statsRow);
+  }
+
+});
