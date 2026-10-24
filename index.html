@@ -88,12 +88,12 @@
           Подать заявку
         </button>
 
-        <!-- Ambient Sound Control -->
-        <button class="audio-toggle-btn" id="audio-toggle" aria-label="Включить атмосферный звук" title="Атмосферный саундтрек">
+        <!-- Video Sound Control -->
+        <button class="audio-toggle-btn" id="audio-toggle" aria-label="Включить звук видео" title="Звук видео">
           <span class="audio-bars">
             <i></i><i></i><i></i><i></i>
           </span>
-          <span class="audio-label">FX</span>
+          <span class="audio-label" id="audio-label">ЗВУК</span>
         </button>
       </div>
     </nav>
@@ -617,6 +617,18 @@
   <audio id="ambient-audio" loop preload="none">
     <source src="https://cdn.freesound.org/previews/563/563914_634166-lq.mp3" type="audio/mp3">
   </audio>
+
+  <!-- Floating Unmute Indicator -->
+  <div class="unmute-banner" id="unmute-banner">
+    <button class="unmute-action-btn" id="unmute-action-btn" type="button">
+      <span class="unmute-pulse"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
+      <span>Включить звук видео</span>
+    </button>
+  </div>
 
   <!-- Notification Toast -->
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>

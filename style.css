@@ -1605,6 +1605,76 @@ a:hover {
 }
 
 /* ==========================================================================
+   FLOATING UNMUTE BANNER
+   ========================================================================== */
+
+.unmute-banner {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+}
+
+.unmute-banner.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(24px);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.unmute-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: rgba(13, 16, 23, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gold-accent);
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 183, 51, 0.3);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  animation: pulseUnmute 2.4s infinite ease-in-out;
+}
+
+.unmute-action-btn:hover {
+  transform: scale(1.05);
+  background: rgba(20, 25, 36, 0.98);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 28px rgba(255, 183, 51, 0.5);
+}
+
+.unmute-action-btn svg {
+  color: var(--gold-accent);
+  stroke: currentColor;
+}
+
+.unmute-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-accent);
+  box-shadow: 0 0 8px var(--gold-accent);
+}
+
+@keyframes pulseUnmute {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 183, 51, 0.25);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 28px rgba(255, 183, 51, 0.5);
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
 

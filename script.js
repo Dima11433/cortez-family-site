@@ -5,13 +5,81 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. FULLSCREEN HERO VIDEO AUTOPLAY & LOOP
+  // 1. FULLSCREEN HERO VIDEO AUTOPLAY & AUDIO MANAGEMENT
   // ------------------------------------------------------------------------
   const heroVideo = document.getElementById('hero-bg-video');
+  const audioToggle = document.getElementById('audio-toggle');
+  const unmuteBanner = document.getElementById('unmute-banner');
+  const unmuteActionBtn = document.getElementById('unmute-action-btn');
+
+  function setAudioState(active) {
+    if (!heroVideo) return;
+    if (active) {
+      heroVideo.muted = false;
+      heroVideo.volume = 1.0;
+      if (audioToggle) audioToggle.classList.add('playing');
+      if (unmuteBanner) unmuteBanner.classList.add('hidden');
+    } else {
+      heroVideo.muted = true;
+      if (audioToggle) audioToggle.classList.remove('playing');
+      if (unmuteBanner) unmuteBanner.classList.remove('hidden');
+    }
+  }
+
+  function enableAudioOnInteraction() {
+    if (heroVideo && heroVideo.muted) {
+      setAudioState(true);
+      showToast('Звук видео включен 🔊');
+    }
+    document.removeEventListener('click', enableAudioOnInteraction);
+    document.removeEventListener('touchstart', enableAudioOnInteraction);
+    document.removeEventListener('keydown', enableAudioOnInteraction);
+  }
+
   if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.play().catch(() => {});
-    heroVideo.addEventListener('pause', () => heroVideo.play().catch(() => {}));
+    // Attempt unmuted play first (if browser policy allows)
+    heroVideo.muted = false;
+    heroVideo.volume = 1.0;
+    const playAttempt = heroVideo.play();
+    if (playAttempt !== undefined) {
+      playAttempt.then(() => {
+        // Unmuted playback allowed directly
+        setAudioState(true);
+      }).catch(() => {
+        // Browser blocked unmuted autoplay: start muted and listen for user interaction
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+        setAudioState(false);
+        document.addEventListener('click', enableAudioOnInteraction, { passive: true });
+        document.addEventListener('touchstart', enableAudioOnInteraction, { passive: true });
+        document.addEventListener('keydown', enableAudioOnInteraction, { passive: true });
+      });
+    }
+
+    heroVideo.addEventListener('pause', () => {
+      heroVideo.play().catch(() => {});
+    });
+  }
+
+  if (unmuteActionBtn) {
+    unmuteActionBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setAudioState(true);
+      showToast('Звук видео включен 🔊');
+    });
+  }
+
+  if (audioToggle && heroVideo) {
+    audioToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (heroVideo.muted) {
+        setAudioState(true);
+        showToast('Звук видео включен 🔊');
+      } else {
+        setAudioState(false);
+        showToast('Звук выключен 🔇');
+      }
+    });
   }
 
   // ------------------------------------------------------------------------
@@ -208,46 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 6. ATMOSPHERIC SOUND AMBIENCE TOGGLE
-  // ------------------------------------------------------------------------
-  const audioToggle = document.getElementById('audio-toggle');
-  const ambientAudio = document.getElementById('ambient-audio');
-
-  if (audioToggle) {
-    let isPlaying = false;
-
-    audioToggle.addEventListener('click', () => {
-      if (heroVideo) {
-        if (heroVideo.muted) {
-          heroVideo.muted = false;
-          heroVideo.volume = 0.5;
-          audioToggle.classList.add('playing');
-          showToast('Звук видео включен');
-        } else {
-          heroVideo.muted = true;
-          audioToggle.classList.remove('playing');
-          showToast('Звук видео выключен');
-        }
-      } else if (ambientAudio) {
-        if (!isPlaying) {
-          ambientAudio.volume = 0.35;
-          ambientAudio.play().then(() => {
-            isPlaying = true;
-            audioToggle.classList.add('playing');
-            showToast('Атмосферный саундтрек включен');
-          }).catch(() => {});
-        } else {
-          ambientAudio.pause();
-          isPlaying = false;
-          audioToggle.classList.remove('playing');
-          showToast('Звук выключен');
-        }
-      }
-    });
-  }
-
-  // ------------------------------------------------------------------------
-  // 7. TOAST NOTIFICATION HELPER
+  // 6. TOAST NOTIFICATION HELPER
   // ------------------------------------------------------------------------
   function showToast(message) {
     const toast = document.getElementById('toast');
