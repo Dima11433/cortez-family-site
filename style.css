@@ -101,6 +101,16 @@ a:hover {
   z-index: 0;
 }
 
+/* Fullscreen Background Video (100% viewport coverage) */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
 /* Overlay 1: Bottom Fade (oklch prompt specs) */
 .overlay-bottom-fade {
   position: absolute;
@@ -458,7 +468,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: clamp(90px, 12vh, 140px) clamp(20px, 6vw, 80px) clamp(40px, 7vh, 64px);
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 6vw, 80px) clamp(44px, 8vh, 72px);
 }
 
 /* Official Family Brand Art (CORTEZFAMQ) */

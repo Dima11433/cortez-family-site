@@ -5,7 +5,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. SUBTLE FLOATING AMBIENT PARTICLES (CANVAS)
+  // 1. FULLSCREEN HERO VIDEO AUTOPLAY & LOOP
+  // ------------------------------------------------------------------------
+  const heroVideo = document.getElementById('hero-bg-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.play().catch(() => {});
+    heroVideo.addEventListener('pause', () => heroVideo.play().catch(() => {}));
+  }
+
+  // ------------------------------------------------------------------------
+  // 2. SUBTLE FLOATING AMBIENT PARTICLES (CANVAS)
   // ------------------------------------------------------------------------
   const canvas = document.getElementById('ambient-canvas');
   if (canvas) {
@@ -203,24 +213,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const audioToggle = document.getElementById('audio-toggle');
   const ambientAudio = document.getElementById('ambient-audio');
 
-  if (audioToggle && ambientAudio) {
+  if (audioToggle) {
     let isPlaying = false;
-    ambientAudio.volume = 0.35;
 
     audioToggle.addEventListener('click', () => {
-      if (!isPlaying) {
-        ambientAudio.play().then(() => {
-          isPlaying = true;
+      if (heroVideo) {
+        if (heroVideo.muted) {
+          heroVideo.muted = false;
+          heroVideo.volume = 0.5;
           audioToggle.classList.add('playing');
-          showToast('Атмосферный саундтрек включен');
-        }).catch(() => {
-          showToast('Взаимодействуйте с сайтом для включения звука');
-        });
-      } else {
-        ambientAudio.pause();
-        isPlaying = false;
-        audioToggle.classList.remove('playing');
-        showToast('Звук выключен');
+          showToast('Звук видео включен');
+        } else {
+          heroVideo.muted = true;
+          audioToggle.classList.remove('playing');
+          showToast('Звук видео выключен');
+        }
+      } else if (ambientAudio) {
+        if (!isPlaying) {
+          ambientAudio.volume = 0.35;
+          ambientAudio.play().then(() => {
+            isPlaying = true;
+            audioToggle.classList.add('playing');
+            showToast('Атмосферный саундтрек включен');
+          }).catch(() => {});
+        } else {
+          ambientAudio.pause();
+          isPlaying = false;
+          audioToggle.classList.remove('playing');
+          showToast('Звук выключен');
+        }
       }
     });
   }

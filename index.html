@@ -21,8 +21,13 @@
        ======================================================== -->
   <section class="hero-container" id="hero">
     
-    <!-- Deep Obsidian Dark Background -->
+    <!-- Deep Obsidian Dark Background Fallback -->
     <div class="hero-backdrop"></div>
+
+    <!-- Fullscreen Background Video (1920x1080) -->
+    <video autoplay muted loop playsinline preload="auto" class="bg-video" id="hero-bg-video">
+      <source src="assets/cortez-hero.mp4" type="video/mp4">
+    </video>
 
     <!-- Overlay 1: Bottom Fade (Prompt spec) -->
     <div class="overlay-bottom-fade"></div>
@@ -98,11 +103,6 @@
          ======================================================== -->
     <div class="hero-content">
       
-      <!-- Official Family Brand Art (CORTEZFAMQ) -->
-      <div class="hero-brand-centerpiece">
-        <img src="assets/cortez-banner.jpg" alt="CORTEZFAMQ — Cortez Family Majestic RP" class="hero-banner-img">
-      </div>
-
       <!-- 6a. Star Ornament (Prompt spec) -->
       <div class="hero-ornament">
         <span class="ornament-line ornament-line-left"></span>
