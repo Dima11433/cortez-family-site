@@ -180,105 +180,155 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 5. APPLICATION TABS (Семья vs РП стак)
+  // 5. APPLICATION TABS (MAIN заявка vs RP заявка)
   // ------------------------------------------------------------------------
-  const tabFamily = document.getElementById('tab-family');
+  const tabMain = document.getElementById('tab-main');
   const tabRp = document.getElementById('tab-rp');
-  const ganggameGroup = document.getElementById('ganggame-group');
-  const ganggameInput = document.getElementById('ganggame-rollback');
-  let currentApplyType = 'family';
+  const modalTitle = document.getElementById('discord-modal-title');
+  const groupExpOrg = document.getElementById('group-exp-org');
+  const inputExpOrg = document.getElementById('apply-exp-org');
+  const groupPastFamilies = document.getElementById('group-past-families');
+  const inputPastFamilies = document.getElementById('apply-past-families');
+  const groupGgRollback = document.getElementById('group-gg-rollback');
+  const inputGgRollback = document.getElementById('apply-gg-rollback');
+
+  let currentApplyType = 'main'; // 'main' or 'rp'
 
   function setApplyType(type) {
     currentApplyType = type;
-    if (type === 'family') {
-      tabFamily.classList.add('active');
-      tabFamily.setAttribute('aria-selected', 'true');
-      tabRp.classList.remove('active');
-      tabRp.setAttribute('aria-selected', 'false');
-
-      if (ganggameGroup) {
-        ganggameGroup.style.display = 'flex';
+    if (type === 'main') {
+      if (tabMain) {
+        tabMain.classList.add('active');
+        tabMain.setAttribute('aria-selected', 'true');
       }
-      if (ganggameInput) {
-        ganggameInput.required = true;
+      if (tabRp) {
+        tabRp.classList.remove('active');
+        tabRp.setAttribute('aria-selected', 'false');
+      }
+      if (modalTitle) modalTitle.textContent = 'MAIN заявка';
+
+      // Show MAIN-specific fields
+      if (groupExpOrg) groupExpOrg.style.display = 'flex';
+      if (inputExpOrg) inputExpOrg.required = true;
+
+      if (groupGgRollback) groupGgRollback.style.display = 'flex';
+
+      // Hide RP-specific fields
+      if (groupPastFamilies) groupPastFamilies.style.display = 'none';
+      if (inputPastFamilies) {
+        inputPastFamilies.required = false;
+        inputPastFamilies.value = '';
       }
     } else {
-      tabRp.classList.add('active');
-      tabRp.setAttribute('aria-selected', 'true');
-      tabFamily.classList.remove('active');
-      tabFamily.setAttribute('aria-selected', 'false');
-
-      if (ganggameGroup) {
-        ganggameGroup.style.display = 'none';
+      if (tabRp) {
+        tabRp.classList.add('active');
+        tabRp.setAttribute('aria-selected', 'true');
       }
-      if (ganggameInput) {
-        ganggameInput.required = false;
-        ganggameInput.value = '';
+      if (tabMain) {
+        tabMain.classList.remove('active');
+        tabMain.setAttribute('aria-selected', 'false');
+      }
+      if (modalTitle) modalTitle.textContent = 'RP заявка';
+
+      // Show RP-specific fields
+      if (groupPastFamilies) groupPastFamilies.style.display = 'flex';
+      if (inputPastFamilies) inputPastFamilies.required = true;
+
+      // Hide MAIN-specific fields
+      if (groupExpOrg) groupExpOrg.style.display = 'none';
+      if (inputExpOrg) {
+        inputExpOrg.required = false;
+        inputExpOrg.value = '';
+      }
+
+      if (groupGgRollback) {
+        groupGgRollback.style.display = 'none';
+        if (inputGgRollback) inputGgRollback.value = '';
       }
     }
   }
 
-  if (tabFamily && tabRp) {
-    tabFamily.addEventListener('click', () => setApplyType('family'));
+  if (tabMain && tabRp) {
+    tabMain.addEventListener('click', () => setApplyType('main'));
     tabRp.addEventListener('click', () => setApplyType('rp'));
   }
 
   // ------------------------------------------------------------------------
-  // 6. MAIN RECRUITMENT APPLICATION FORM (FloryBOT)
+  // 6. MAIN RECRUITMENT APPLICATION FORM (Discord FloryBOT format)
   // ------------------------------------------------------------------------
   const applyForm = document.getElementById('apply-form');
   const applySuccess = document.getElementById('apply-success');
   const resetFormBtn = document.getElementById('reset-form-btn');
   const formCancelBtn = document.getElementById('form-cancel-btn');
+  const formResetIcon = document.getElementById('form-reset-icon');
+  const warningBanner = document.getElementById('discord-warning-banner');
 
   if (applyForm) {
     applyForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const typeLabel = currentApplyType === 'family' ? '⚔️ Заявка в семью FLORY (Основной капт-состав)' : '🎭 Заявка в РП стак FLORY';
-      const name = document.getElementById('char-name')?.value.trim() || 'Не указано';
-      const age = document.getElementById('ooc-age')?.value.trim() || 'Не указано';
-      const discord = document.getElementById('discord-contact')?.value.trim() || 'Не указано';
-      const screenshot = document.getElementById('screenshot-characters')?.value.trim() || 'Не указано';
-      const history = document.getElementById('family-history')?.value.trim() || 'Не указано';
-      const ganggame = currentApplyType === 'family' ? (document.getElementById('ganggame-rollback')?.value.trim() || 'Не указано') : 'Не требуется (РП стак)';
-      const activity = document.getElementById('activity-time')?.value.trim() || 'Не указано';
-      const staticId = document.getElementById('static-id-contact')?.value.trim() || 'Не указано';
+      const nickStatic = document.getElementById('apply-nick-static')?.value.trim() || 'Не указано';
+      const nameAgeOnline = document.getElementById('apply-name-age-online')?.value.trim() || 'Не указано';
+      const expRp = document.getElementById('apply-exp-rp')?.value.trim() || 'Не указано';
 
-      const formattedBotText = 
+      let formattedBotText = '';
+
+      if (currentApplyType === 'main') {
+        const expOrg = document.getElementById('apply-exp-org')?.value.trim() || 'Не указано';
+        const ggRollback = document.getElementById('apply-gg-rollback')?.value.trim() || 'Не прикреплен';
+
+        formattedBotText = 
 `━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔥 ${typeLabel} — СЕРВЕР #15 PHOENIX
+⚔️ MAIN ЗАЯВКА · FLORY FAMQ (PHOENIX #15)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-👤 Имя персонажа (IC): ${name}
-🎂 Возраст (OOC): ${age}
-💬 Discord для связи: ${discord}
-🆔 Static ID на Phoenix: ${staticId}
-📸 Скриншот персонажей: ${screenshot}
-📜 История семей: ${history}
-🎯 Откат с гангейма (тяжка/спешик): ${ganggame}
-⏰ Активность (прайм / онлайн): ${activity}
+👤 Ник | Статик: ${nickStatic}
+🎂 Имя | Возраст | Онлайн: ${nameAgeOnline}
+🏆 Опыт в орг. МП / семьях: ${expOrg}
+🎮 Опыт на RP–проектах: ${expRp}
+🎯 Откат с GG: ${ggRollback}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 Отправлено через официальный сайт FLORY FAMQ`;
+      } else {
+        const pastFamilies = document.getElementById('apply-past-families')?.value.trim() || 'Не указано';
+
+        formattedBotText = 
+`━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎭 RP ЗАЯВКА · FLORY FAMQ (PHOENIX #15)
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 Ник | Статик: ${nickStatic}
+🎂 Имя | Возраст | Онлайн: ${nameAgeOnline}
+📜 В каких семьях были раньше?: ${pastFamilies}
+🎮 Опыт на RP–проектах: ${expRp}
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Отправлено через официальный сайт FLORY FAMQ`;
+      }
 
       navigator.clipboard.writeText(formattedBotText).then(() => {
         showToast('Заявка скопирована в буфер для FloryBOT!');
-      }).catch(() => {});
+      }).catch(() => {
+        showToast('Заявка сформирована!');
+      });
 
       applyForm.style.display = 'none';
+      if (warningBanner) warningBanner.style.display = 'none';
       if (applySuccess) {
         applySuccess.style.display = 'block';
         applySuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
 
+    function resetFormState() {
+      applyForm.reset();
+      applyForm.style.display = 'flex';
+      if (warningBanner) warningBanner.style.display = 'flex';
+      if (applySuccess) {
+        applySuccess.style.display = 'none';
+      }
+      setApplyType(currentApplyType);
+    }
+
     if (resetFormBtn) {
-      resetFormBtn.addEventListener('click', () => {
-        applyForm.reset();
-        applyForm.style.display = 'flex';
-        if (applySuccess) {
-          applySuccess.style.display = 'none';
-        }
-      });
+      resetFormBtn.addEventListener('click', resetFormState);
     }
 
     if (formCancelBtn) {
@@ -287,60 +337,32 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Форма очищена');
       });
     }
-  }
 
-  // ------------------------------------------------------------------------
-  // 7. QUICK MODAL DIALOG (<dialog>)
-  // ------------------------------------------------------------------------
-  const quickDialog = document.getElementById('quick-dialog');
-  const openApplyBtn = document.getElementById('open-apply-btn');
-  const modalClose = document.getElementById('modal-close');
-  const modalForm = document.getElementById('modal-form');
-  const modalSuccess = document.getElementById('modal-success');
-
-  if (quickDialog && openApplyBtn) {
-    openApplyBtn.addEventListener('click', () => {
-      quickDialog.showModal();
-    });
-
-    if (modalClose) {
-      modalClose.addEventListener('click', () => {
-        quickDialog.close();
+    if (formResetIcon) {
+      formResetIcon.addEventListener('click', () => {
+        applyForm.reset();
+        showToast('Форма очищена');
       });
     }
+  }
 
-    // Light dismiss
-    quickDialog.addEventListener('click', (e) => {
-      const rect = quickDialog.getBoundingClientRect();
-      const isInDialog = (
-        rect.top <= e.clientY &&
-        e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX &&
-        e.clientX <= rect.left + rect.width
-      );
-      if (!isInDialog) {
-        quickDialog.close();
+  // Navbar CTA scroll to #apply
+  const openApplyBtn = document.getElementById('open-apply-btn');
+  if (openApplyBtn) {
+    openApplyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const applySection = document.getElementById('apply');
+      if (applySection) {
+        applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = document.getElementById('apply-nick-static');
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 600);
+        }
       }
     });
-
-    if (modalForm) {
-      modalForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        modalForm.style.display = 'none';
-        if (modalSuccess) {
-          modalSuccess.style.display = 'block';
-        }
-        setTimeout(() => {
-          quickDialog.close();
-          setTimeout(() => {
-            modalForm.reset();
-            modalForm.style.display = 'flex';
-            modalSuccess.style.display = 'none';
-          }, 400);
-        }, 2200);
-      });
-    }
   }
+
+
 
   // ------------------------------------------------------------------------
   // 8. TOAST NOTIFICATION HELPER
