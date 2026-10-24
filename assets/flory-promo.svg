@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="promoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f0710" />
+      <stop offset="50%" stop-color="#120409" />
+      <stop offset="100%" stop-color="#050103" />
+    </linearGradient>
+    <linearGradient id="crimsonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1E56" />
+      <stop offset="100%" stop-color="#FF5252" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="650" fill="url(#promoBg)" />
+
+  <!-- Diagonal Cyber Lines -->
+  <line x1="0" y1="200" x2="1000" y2="450" stroke="#FF1E56" stroke-width="1" opacity="0.1" />
+  <line x1="0" y1="350" x2="1000" y2="600" stroke="#FF1E56" stroke-width="1" opacity="0.08" />
+
+  <!-- Crimson Ambient Aura -->
+  <circle cx="500" cy="280" r="240" fill="#FF1E56" opacity="0.14" filter="url(#glow)" />
+
+  <!-- Server Badge -->
+  <rect x="360" y="80" width="280" height="42" rx="21" fill="rgba(255, 30, 86, 0.18)" stroke="#FF1E56" stroke-width="1.5" />
+  <circle cx="385" cy="101" r="5" fill="#00FF88" />
+  <text x="515" y="107" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">СЕРВЕР #15 PHOENIX</text>
+
+  <!-- Big Promo Code Badge -->
+  <g transform="translate(150, 160)">
+    <rect x="0" y="0" width="700" height="260" rx="24" fill="#0c0407" stroke="#FF1E56" stroke-width="2" />
+    <rect x="15" y="15" width="670" height="230" rx="16" fill="none" stroke="rgba(255, 30, 86, 0.25)" stroke-width="1" stroke-dasharray="8,6" />
+    
+    <text x="350" y="65" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FF85A1" text-anchor="middle" letter-spacing="4">ОФИЦИАЛЬНЫЙ ПРОМОКОД СЕМЬИ</text>
+    
+    <!-- Code Highlight Box -->
+    <rect x="150" y="90" width="400" height="100" rx="16" fill="rgba(255, 30, 86, 0.12)" stroke="url(#crimsonGrad)" stroke-width="2" filter="url(#glow)" />
+    <text x="350" y="160" font-family="'Cinzel', Georgia, serif" font-size="58" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="10">FLORY</text>
+    
+    <text x="350" y="222" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#E2E8F0" text-anchor="middle" letter-spacing="2">ВВОДИ ПРИ РЕГИСТРАЦИИ НА СЕРВЕРЕ PHOENIX</text>
+  </g>
+
+  <!-- 3 Perks Row -->
+  <g transform="translate(100, 460)">
+    <!-- Perk 1 -->
+    <rect x="0" y="0" width="240" height="110" rx="16" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <text x="120" y="48" font-family="'Cinzel', serif" font-size="28" font-weight="900" fill="#FF2A54" text-anchor="middle">50 000$</text>
+    <text x="120" y="78" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">Стартовый баланс</text>
+
+    <!-- Perk 2 -->
+    <rect x="280" y="0" width="240" height="110" rx="16" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <text x="400" y="48" font-family="'Cinzel', serif" font-size="24" font-weight="900" fill="#FFD166" text-anchor="middle">PLATINUM VIP</text>
+    <text x="400" y="78" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">7 дней премиума</text>
+
+    <!-- Perk 3 -->
+    <rect x="560" y="0" width="240" height="110" rx="16" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <text x="680" y="48" font-family="'Cinzel', serif" font-size="28" font-weight="900" fill="#FF5252" text-anchor="middle">X2 БУСТ</text>
+    <text x="680" y="78" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">Опыт и зарплаты</text>
+  </g>
+</svg>

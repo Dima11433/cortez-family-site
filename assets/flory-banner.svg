@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bannerBg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#2a0815" />
+      <stop offset="45%" stop-color="#120409" />
+      <stop offset="100%" stop-color="#050204" />
+    </radialGradient>
+    <linearGradient id="fireGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1E56" />
+      <stop offset="40%" stop-color="#FF477E" />
+      <stop offset="70%" stop-color="#FF85A1" />
+      <stop offset="100%" stop-color="#FF99C8" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9F43" />
+      <stop offset="100%" stop-color="#EE5253" />
+    </linearGradient>
+    <filter id="flameBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="675" fill="url(#bannerBg)" />
+
+  <!-- Grid / Cyber Texture -->
+  <g opacity="0.08" stroke="#FF1E56" stroke-width="1">
+    <line x1="0" y1="150" x2="1200" y2="150" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="450" x2="1200" y2="450" />
+    <line x1="0" y1="600" x2="1200" y2="600" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+  </g>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="600" cy="300" r="280" fill="#FF1E56" opacity="0.16" filter="url(#flameBlur)" />
+  <circle cx="450" cy="240" r="150" fill="#FF9F43" opacity="0.12" filter="url(#flameBlur)" />
+
+  <!-- Stylized Phoenix Silhouette Center -->
+  <path d="M600,140 C530,90 400,60 300,120 C280,180 330,240 400,260 C340,280 300,340 330,400 C400,400 480,340 540,300 C480,340 440,420 480,480 C530,480 580,400 600,340 C620,400 670,480 720,480 C760,420 720,340 660,300 C720,340 800,400 870,400 C900,340 860,280 800,260 C870,240 920,180 900,120 C800,60 670,90 600,140 Z" fill="url(#fireGrad)" opacity="0.22" filter="url(#flameBlur)" />
+  <path d="M600,160 C540,110 420,85 330,140 C310,195 355,250 420,270 C365,290 330,345 355,400 C420,400 490,345 545,310 C490,345 455,420 490,470 C535,470 580,400 600,345 C620,400 665,470 710,470 C745,420 710,345 655,310 C710,345 780,400 845,400 C870,345 835,290 780,270 C845,250 890,195 870,140 C780,85 660,110 600,160 Z" fill="none" stroke="url(#fireGrad)" stroke-width="2" opacity="0.6" />
+
+  <!-- City Skyline Silhouette Bottom -->
+  <path d="M0,675 L0,580 L40,580 L40,550 L80,550 L80,600 L120,600 L120,530 L160,530 L160,675 L220,675 L220,560 L270,560 L270,520 L310,520 L310,675 L380,675 L380,490 L430,490 L430,675 L520,675 L520,540 L570,540 L570,675 L650,675 L650,510 L700,510 L700,470 L730,470 L730,675 L810,675 L810,550 L860,550 L860,675 L940,675 L940,500 L990,500 L990,675 L1060,675 L1060,560 L1110,560 L1110,675 L1200,675 Z" fill="#040103" />
+
+  <!-- Banner Headline Typography -->
+  <text x="600" y="360" font-family="'Cinzel', Georgia, serif" font-size="76" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="14">FLORY FAMQ</text>
+  <text x="600" y="420" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#FF477E" text-anchor="middle" letter-spacing="8">MAJESTIC ROLEPLAY · SERVER #15 PHOENIX</text>
+
+  <!-- Tagline Pill -->
+  <rect x="425" y="460" width="350" height="36" rx="18" fill="rgba(255, 30, 86, 0.15)" stroke="#FF1E56" stroke-width="1.5" />
+  <text x="600" y="483" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFE5EC" text-anchor="middle" letter-spacing="3">CRIMSON DYNASTY OF LOS SANTOS</text>
+
+  <!-- Sparks / Fire Particles -->
+  <circle cx="280" cy="220" r="3" fill="#FF9F43" filter="url(#flameBlur)" />
+  <circle cx="340" cy="380" r="2" fill="#FF1E56" />
+  <circle cx="860" cy="250" r="3" fill="#FF9F43" filter="url(#flameBlur)" />
+  <circle cx="920" cy="350" r="2" fill="#FF1E56" />
+  <circle cx="600" cy="180" r="4" fill="#FFD166" filter="url(#flameBlur)" />
+</svg>

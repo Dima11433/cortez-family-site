@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLORY FAMQ — Majestic RP | 15 Сервер Phoenix</title>
+  <meta name="description" content="Официальный портал семьи FLORY FAMQ на 15 сервере Phoenix проекта Majestic RolePlay. Доминирование, кодекс чести, промокод FLORY и вступление в семью.">
+  <link rel="icon" type="image/svg+xml" href="assets/flory-logo.svg">
+
+  <!-- Google Fonts: Cinzel (gothic accent) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="flory.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. HERO SECTION (FULL VIEWPORT)
+       ======================================================== -->
+  <section class="hero-container" id="hero">
+    
+    <!-- Deep Obsidian Crimson Backdrop -->
+    <div class="hero-backdrop"></div>
+
+    <!-- Fullscreen Background Video -->
+    <video autoplay muted loop playsinline preload="auto" class="bg-video" id="hero-bg-video">
+      <source src="assets/cortez-hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Crimson & Vignette Overlays -->
+    <div class="overlay-bottom-fade"></div>
+    <div class="overlay-vignette"></div>
+    <div class="bottom-glow"></div>
+
+    <!-- Phoenix Flame Embers Canvas -->
+    <canvas id="ambient-canvas" class="ambient-canvas"></canvas>
+
+    <!-- ========================================================
+         NAVBAR
+         ======================================================== -->
+    <nav class="navbar">
+      <a href="#hero" class="nav-brand" aria-label="FLORY FAMQ Home">
+        <div class="brand-avatar-wrap">
+          <img src="assets/flory-logo.svg" alt="FLORY FAMQ Crest" class="brand-crest-img">
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">FLORY FAMQ</span>
+          <span class="brand-subtitle">MAJESTIC RP · PHOENIX #15</span>
+        </div>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Nav Links & CTA -->
+      <div class="nav-right" id="nav-menu">
+        <div class="nav-links">
+          <a href="#about" class="nav-link">О семье</a>
+          <a href="#promo" class="nav-link">Промокод</a>
+          <a href="#socials" class="nav-link">Спецсвязь</a>
+          <a href="#code" class="nav-link">Кодекс</a>
+          <!-- Link to Cortez Family site -->
+          <a href="index.html" class="nav-switcher-link" title="Перейти на сайт семьи Cortez (Memphis #19)">
+            <span>⚔️ CORTEZ #19</span>
+          </a>
+        </div>
+        
+        <button class="nav-cta-btn" id="open-apply-btn" type="button">
+          Подать заявку
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========================================================
+         HERO CONTENT
+         ======================================================== -->
+    <div class="hero-content">
+      
+      <!-- Flame Ornament -->
+      <div class="hero-ornament">
+        <span class="ornament-line"></span>
+        <span class="ornament-glyph">🔥</span>
+        <span class="ornament-line ornament-line-right"></span>
+      </div>
+
+      <h1 class="hero-title">FLORY FAMQ</h1>
+
+      <p class="hero-subtext">
+        Криминальный синдикат штата Los Santos на 15 сервере Phoenix.<br>
+        Хладнокровие в перестрелках, стальная дисциплина и верность семье до конца.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <a href="#apply" class="primary-btn" id="hero-cta-btn">
+          <span>Вступить в семью</span>
+          <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12h15"></path>
+            <path d="M13.5 5.5 20 12l-6.5 6.5"></path>
+          </svg>
+        </a>
+        <a href="#about" class="secondary-btn">
+          <span>Досье семьи</span>
+        </a>
+      </div>
+
+      <!-- Quick Social Channels Bar -->
+      <div class="hero-socials">
+        <a href="https://discord.gg/majestic" target="_blank" rel="noopener noreferrer" class="hero-social-link discord-pill" title="Discord семьи FLORY">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          <span>Discord</span>
+        </a>
+        <a href="https://t.me/majestic_rp" target="_blank" rel="noopener noreferrer" class="hero-social-link telegram-pill" title="Telegram семьи FLORY">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hero-social-link youtube-pill" title="YouTube канал семьи">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>YouTube</span>
+        </a>
+        <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="hero-social-link twitch-pill" title="Twitch стримы">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+          </svg>
+          <span>Twitch</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       2. SECTION: О СЕМЬЕ / ABOUT & LORE
+       ======================================================== -->
+  <section class="section section-about" id="about">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <div class="badge-tag">MAJESTIC RP · СЕРВЕР #15 PHOENIX</div>
+        <h2 class="section-title">ЛЕГЕНДА СЕМЬИ <span>FLORY</span></h2>
+        <p class="section-lead">История возрождения и триумфа тех, кто контролирует перестрелки и правила улиц штата.</p>
+      </div>
+
+      <div class="about-grid">
+        
+        <!-- Left Banner Card -->
+        <div class="about-banner-card">
+          <div class="banner-image-wrap">
+            <img src="assets/flory-banner.svg" alt="FLORY FAMQ Phoenix #15 Banner" class="banner-img">
+            <div class="banner-overlay"></div>
+          </div>
+          <div class="banner-caption">
+            <div class="tag-live"><span class="pulse-dot"></span>НАБОР В ОСНОВНОЙ СОСТАВ</div>
+            <h3>FLORY FAMQ</h3>
+            <p>Стальные нервы, безоговорочная стрельба и преданность синдикату на каждом капте.</p>
+          </div>
+        </div>
+
+        <!-- Right Lore & Stats -->
+        <div class="about-content">
+          <div class="story-block">
+            <h3 class="story-heading">Возрождаясь из огня</h3>
+            <p>
+              Семья <strong>FLORY FAMQ</strong> закрепила за собой репутацию сильнейшего стрелкового объединения на сервере <strong>#15 Phoenix</strong>. Нас объединяют не просто слова, а слаженная работа на бизварах, выбивание поставок и абсолютный контроль территорий.
+            </p>
+            <p>
+              В семье действует жесткая иерархия и военная дисциплина. Каждый стрелок получает полное снабжение со склада, регулярные разборы стрельбы и поддержку всего состава в любой конфликтной ситуации.
+            </p>
+          </div>
+
+          <!-- Family Stats Metrics -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-num" data-count="150">150+</span>
+              <span class="stat-label">Бойцов в составе</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">24/7</span>
+              <span class="stat-label">Активность в штате</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">TOP-1</span>
+              <span class="stat-label">Стрелковый стак</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">#15</span>
+              <span class="stat-label">Сервер Phoenix</span>
+            </div>
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <strong>Собственный особняк и арсенал</strong>
+                <span>Элитная база со складом спецвооружения, бронежилетов и вертолетной площадкой.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <strong>Капты, бизвары & перехваты</strong>
+                <span>Ежедневные боевые выезды, командная координация и разборы откатов со стрельбы.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <strong>Полное обеспечение стрелков</strong>
+                <span>Тяжелые снайперские винтовки, сайги, броня и аптечки выдаются каждому активному бойцу.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       3. SECTION: ПРОМОКОД / BONUS & REGISTRATION
+       ======================================================== -->
+  <section class="section section-promo" id="promo">
+    <div class="section-container">
+      
+      <div class="promo-card">
+        
+        <div class="promo-banner-wrap">
+          <img src="assets/flory-promo.svg" alt="Majestic RP Phoenix Promo FLORY" class="promo-banner-img">
+          <div class="promo-banner-overlay"></div>
+          <div class="promo-server-tag">
+            <span class="live-dot"></span> СЕРВЕР #15 PHOENIX
+          </div>
+        </div>
+
+        <div class="promo-info">
+          <div class="badge-tag">СТАРТОВЫЙ БОНУС</div>
+          <h2 class="promo-title">ИГРАЙ С НАМИ ПО ПРОМОКОДУ <span class="crimson-text">FLORY</span></h2>
+          <p class="promo-lead">
+            Начни свой путь на сервере <strong>Phoenix (#15)</strong> с максимальным преимуществом. Вводи официальный промокод семьи <strong>FLORY</strong> при регистрации аккаунта!
+          </p>
+
+          <div class="promo-perks">
+            <div class="perk-box">
+              <span class="perk-icon">💵</span>
+              <div class="perk-text">
+                <strong>50 000$</strong>
+                <span>Стартовый капитал на счет</span>
+              </div>
+            </div>
+            <div class="perk-box">
+              <span class="perk-icon">👑</span>
+              <div class="perk-text">
+                <strong>Platinum VIP</strong>
+                <span>7 дней бесплатного VIP статуса</span>
+              </div>
+            </div>
+            <div class="perk-box">
+              <span class="perk-icon">⚡</span>
+              <div class="perk-text">
+                <strong>x2 Опыт & ЗП</strong>
+                <span>Ускоренный фарм и прокачка</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Promo Copy & Register Button -->
+          <div class="promo-actions">
+            <div class="promo-code-box" id="copy-promo-btn" title="Нажмите, чтобы скопировать промокод">
+              <span class="code-label">ПРОМОКОД:</span>
+              <span class="code-val">FLORY</span>
+              <svg class="copy-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </div>
+
+            <a href="https://majestic-rp.ru/register/?utm_campaign=flory" target="_blank" rel="noopener noreferrer" class="primary-btn promo-register-btn">
+              <span>Зарегистрироваться на Phoenix</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. SECTION: СПЕЦСВЯЗЬ & МЕДИА / SOCIALS & MEDIA HUB
+       ======================================================== -->
+  <section class="section section-socials" id="socials">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <div class="badge-tag">ОФИЦИАЛЬНЫЕ КАНАЛЫ</div>
+        <h2 class="section-title">СПЕЦСВЯЗЬ & МЕДИА <span class="crimson-text">FLORY</span></h2>
+        <p class="section-lead">Официальные ресурсы синдиката на 15 сервере Phoenix: голосовая спецсвязь, чаты и стримы.</p>
+      </div>
+
+      <div class="socials-grid">
+        
+        <!-- Discord Card -->
+        <a href="https://discord.gg/majestic" target="_blank" rel="noopener noreferrer" class="social-card card-discord">
+          <div class="social-card-header">
+            <div class="social-icon-box icon-discord">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+            </div>
+            <div class="social-badge">СПЕЦСВЯЗЬ</div>
+          </div>
+          <h3 class="social-card-title">DISCORD СЕМЬИ</h3>
+          <p class="social-card-desc">
+            Основной сервер семьи. Координация перестрелок, канал приема заявок и верификация через <strong>FloryBOT</strong>.
+          </p>
+          <div class="social-card-cta">
+            <span>Войти на сервер</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Telegram Card -->
+        <a href="https://t.me/majestic_rp" target="_blank" rel="noopener noreferrer" class="social-card card-telegram">
+          <div class="social-card-header">
+            <div class="social-icon-box icon-telegram">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              </svg>
+            </div>
+            <div class="social-badge">НОВОСТИ & СБОРЫ</div>
+          </div>
+          <h3 class="social-card-title">TELEGRAM СЕМЬИ</h3>
+          <p class="social-card-desc">
+            Оперативные анонсы сборов, новости сервера Phoenix и оперативная связь с руководством семьи 24/7.
+          </p>
+          <div class="social-card-cta">
+            <span>Вступить в Telegram</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+        </a>
+
+        <!-- YouTube Card -->
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card card-youtube">
+          <div class="social-card-header">
+            <div class="social-icon-box icon-youtube">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <div class="social-badge">ВИДЕО & МУВИКИ</div>
+          </div>
+          <h3 class="social-card-title">YOUTUBE КАНАЛ</h3>
+          <p class="social-card-desc">
+            Фрагмуви со стрельбы, хайлайты с каптов и победные моменты синдиката FLORY на сервере Phoenix.
+          </p>
+          <div class="social-card-cta">
+            <span>Смотреть ролики</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Phoenix Portal Card -->
+        <a href="https://majestic-rp.ru" target="_blank" rel="noopener noreferrer" class="social-card card-phoenix">
+          <div class="social-card-header">
+            <div class="social-icon-box icon-phoenix">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="social-badge badge-crimson">PHOENIX #15</div>
+          </div>
+          <h3 class="social-card-title">ПОРТАЛ СЕРВЕРА</h3>
+          <p class="social-card-desc">
+            Официальный сервер Majestic RP #15 Phoenix. Статистика штата, правила каптов и игровой лаунчер.
+          </p>
+          <div class="social-card-cta">
+            <span>majestic-rp.ru</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. SECTION: КОДЕКС ЧЕСТИ / CODE OF HONOR
+       ======================================================== -->
+  <section class="section section-code" id="code">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <div class="badge-tag">ЗАКОНЫ СИНДИКАТА</div>
+        <h2 class="section-title">КОДЕКС ЧЕСТИ <span>FLORY</span></h2>
+        <p class="section-lead">Фундамент нашего превосходства на сервере Phoenix. Нарушение карается изгнанием.</p>
+      </div>
+
+      <div class="code-grid">
+        
+        <div class="code-card">
+          <div class="code-num">I</div>
+          <h3 class="code-title">Преданность семье</h3>
+          <p class="code-desc">
+            Интересы FLORY FAMQ всегда стоят на первом месте. Любой слив информации или сотрудничество с оппонентами — бессрочный ЧС семьи.
+          </p>
+        </div>
+
+        <div class="code-card">
+          <div class="code-num">II</div>
+          <h3 class="code-title">Дисциплина радиоэфира</h3>
+          <p class="code-desc">
+            На каптах и выездах соблюдается строгая тишина в спецсвязи Discord. Информацию выдаёт только лидер или назначенный координатор.
+          </p>
+        </div>
+
+        <div class="code-card">
+          <div class="code-num">III</div>
+          <h3 class="code-title">Брат за брата</h3>
+          <p class="code-desc">
+            Любое нападение на бойца Flory — это объявление войны всей семье. Мы не оставляем своих в беде ни при каких обстоятельствах.
+          </p>
+        </div>
+
+        <div class="code-card">
+          <div class="code-num">IV</div>
+          <h3 class="code-title">Уважение к складу</h3>
+          <p class="code-desc">
+            Оружие и спецснаряжение берутся строго под капты и операции. Разбил семейное авто — почини и заправь перед возвращением.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. SECTION: ЗАЯВКА НА ВСТУПЛЕНИЕ / APPLICATION
+       ======================================================== -->
+  <section class="section section-apply" id="apply">
+    <div class="section-container">
+      
+      <div class="apply-box">
+        
+        <div class="apply-header">
+          <div class="badge-tag">РЕКРУТИНГ · FLORYBOT</div>
+          <h2 class="section-title">ЗАЯВКА НА ВСТУПЛЕНИЕ В <span>FLORY FAMQ</span></h2>
+        </div>
+
+        <!-- Application Tabs -->
+        <div class="apply-tabs" role="tablist">
+          <button type="button" class="apply-tab-btn active" id="tab-family" data-type="family" role="tab" aria-selected="true">
+            ⚔️ Заявка в семью
+          </button>
+          <button type="button" class="apply-tab-btn" id="tab-rp" data-type="rp" role="tab" aria-selected="false">
+            🎭 Заявка в РП стак
+          </button>
+        </div>
+
+        <!-- Application Form -->
+        <form class="apply-form" id="apply-form">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="char-name">Имя персонажа (IC) *</label>
+              <input type="text" id="char-name" name="charName" placeholder="например: Dante Flory" required>
+            </div>
+            <div class="form-group">
+              <label for="ooc-age">Ваш реальный возраст (OOC) *</label>
+              <input type="number" id="ooc-age" name="oocAge" placeholder="например: 18" min="14" max="99" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="discord-contact">Ваш Discord для связи *</label>
+              <input type="text" id="discord-contact" name="discordContact" placeholder="например: flory_shooter" required>
+            </div>
+            <div class="form-group">
+              <label for="static-id-contact">Static ID на Phoenix #15</label>
+              <input type="text" id="static-id-contact" name="staticId" placeholder="например: #45120 (необязательно)">
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="screenshot-characters">Скриншот персонажей *</label>
+            <input type="url" id="screenshot-characters" name="screenshotCharacters" placeholder="Вставьте ссылку на скриншот (Imgur, Yapx, Lightshot)" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="family-history">История семей *</label>
+            <textarea id="family-history" name="familyHistory" rows="3" placeholder="Опишите в каких семьях состояли ранее" required></textarea>
+          </div>
+
+          <!-- Ganggame Rollback (Only for Family main squad) -->
+          <div class="form-group full-width" id="ganggame-group">
+            <label for="ganggame-rollback">Откат с гангейма (тяжка/спешик) *</label>
+            <input type="url" id="ganggame-rollback" name="ganggameRollback" placeholder="Ссылка на откат (YouTube, Rutube, Drive): >=5 минут" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="activity-time">Активность (прайм-тайм и онлайн) *</label>
+            <input type="text" id="activity-time" name="activityTime" placeholder="Например: Прайм: 17:00-23:00, Онлайн: 4-6 часов" required>
+          </div>
+
+          <!-- Actions -->
+          <div class="discord-actions">
+            <button type="reset" class="discord-cancel-btn" id="form-cancel-btn">Очистить</button>
+            <button type="submit" class="discord-submit-btn">Отправить заявку</button>
+          </div>
+
+        </form>
+
+        <!-- Success Message -->
+        <div class="apply-success" id="apply-success" style="display: none;">
+          <div class="success-icon">🔥</div>
+          <h3 id="success-title">Заявка сформирована для FloryBOT!</h3>
+          <p>
+            Текст заявки успешно скопирован в буфер обмена.<br>
+            Перейдите в наш Discord в канал <strong>#заявки</strong> и отправьте скопированный текст.
+          </p>
+          <div class="apply-success-actions">
+            <a href="https://discord.gg/majestic" target="_blank" rel="noopener noreferrer" class="primary-btn success-discord-btn">
+              <span>Открыть Discord семьи</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <button type="button" class="form-reset-btn" id="reset-form-btn">Подать еще одну заявку</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/flory-logo.svg" alt="FLORY FAMQ Crest" class="footer-crest">
+          <div>
+            <div class="footer-title">FLORY FAMQ</div>
+            <div class="footer-sub">MAJESTIC RP · PHOENIX #15</div>
+          </div>
+        </div>
+        <p class="footer-quote">
+          «Возрождаясь из огня, мы берем своё. Семья превыше всего.»
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="#hero">Главная</a>
+          <a href="#about">О семье</a>
+          <a href="#promo">Промокод FLORY</a>
+          <a href="#socials">Спецсвязь</a>
+          <a href="#code">Кодекс</a>
+          <a href="index.html">Сайт CORTEZ (Memphis)</a>
+        </div>
+        <div class="footer-col">
+          <h4>Сообщество & Медиа</h4>
+          <a href="https://discord.gg/majestic" target="_blank" rel="noopener noreferrer">Discord семьи FLORY</a>
+          <a href="https://t.me/majestic_rp" target="_blank" rel="noopener noreferrer">Telegram канал</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube канал</a>
+          <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer">Twitch стримы</a>
+        </div>
+        <div class="footer-col">
+          <h4>Majestic RP</h4>
+          <a href="https://majestic-rp.ru/register/?utm_campaign=flory" target="_blank" rel="noopener">Регистрация (Бонус FLORY)</a>
+          <a href="https://majestic-rp.ru" target="_blank" rel="noopener">Majestic RP Портал</a>
+          <a href="#apply">Форма рекрутинга</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span>© 2026 FLORY FAMQ. Все права защищены. Сервер #15 Phoenix.</span>
+        <span>Создано для игрового сообщества Majestic RolePlay.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       QUICK APPLICATION MODAL (<dialog>)
+       ======================================================== -->
+  <dialog class="modal-dialog" id="quick-dialog">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Закрыть">&times;</button>
+      
+      <div class="modal-header">
+        <div class="badge-tag">БЫСТРЫЙ КОНТАКТ</div>
+        <h3 class="section-title" style="font-size:24px;">ВСТУПИТЬ В <span class="crimson-text">FLORY</span></h3>
+        <p class="section-lead" style="font-size:13px;">Оставьте свой Discord, и куратор рекрутинга свяжется с вами.</p>
+      </div>
+
+      <form id="modal-form" class="apply-form">
+        <div class="form-group">
+          <label for="m-name">Имя персонажа / Static ID</label>
+          <input type="text" id="m-name" placeholder="Dante Flory #45120" required>
+        </div>
+        <div class="form-group">
+          <label for="m-discord">Ваш Discord для связи</label>
+          <input type="text" id="m-discord" placeholder="flory_member" required>
+        </div>
+        <button type="submit" class="primary-btn" style="width:100%; justify-content:center; margin-top:8px;">
+          <span>Отправить контакты</span>
+        </button>
+      </form>
+
+      <div class="modal-success" id="modal-success" style="display:none; text-align:center; padding:20px 0;">
+        <div class="success-icon">🔥</div>
+        <h4 style="color:#fff; margin-bottom:6px;">Контакты отправлены!</h4>
+        <p style="font-size:13px; color:var(--text-muted);">Мы свяжемся с вами в Discord в ближайшее время.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Floating Unmute Indicator -->
+  <div class="unmute-banner" id="unmute-banner">
+    <button class="unmute-action-btn" id="unmute-action-btn" type="button">
+      <span class="unmute-pulse"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
+      <span>Включить звук видео</span>
+    </button>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <script src="flory.js"></script>
+</body>
+</html>

@@ -456,6 +456,27 @@ a:hover {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.nav-switcher-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 42, 84, 0.12);
+  border: 1px solid rgba(255, 42, 84, 0.4);
+  color: #FF2A54 !important;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-switcher-link:hover {
+  background: rgba(255, 42, 84, 0.25);
+  box-shadow: 0 0 14px rgba(255, 42, 84, 0.4);
+  transform: translateY(-1px);
+}
+
 /* ==========================================================================
    6. HERO CONTENT (PUSHED TO THE BOTTOM)
    ========================================================================== */
