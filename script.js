@@ -396,4 +396,58 @@ ${staticId ? `🆔 **Static ID:** ${staticId}\n` : ''}━━━━━━━━�
     observer.observe(statsRow);
   }
 
+  // ------------------------------------------------------------------------
+  // 9. ACHIEVEMENTS IMAGE LIGHTBOX MODAL
+  // ------------------------------------------------------------------------
+  const lightboxDialog = document.getElementById('lightbox-dialog');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const achieveMediaWraps = document.querySelectorAll('.achieve-media-wrap');
+
+  if (lightboxDialog && lightboxImg && achieveMediaWraps.length > 0) {
+    achieveMediaWraps.forEach(wrap => {
+      const openLightbox = () => {
+        const src = wrap.getAttribute('data-img');
+        const caption = wrap.getAttribute('data-title');
+        if (!src) return;
+
+        lightboxImg.src = src;
+        lightboxImg.alt = caption || 'Достижение семьи CORTEZ';
+        if (lightboxCaption) {
+          lightboxCaption.textContent = caption || '';
+        }
+        lightboxDialog.showModal();
+      };
+
+      wrap.addEventListener('click', openLightbox);
+      wrap.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox();
+        }
+      });
+    });
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', () => {
+        lightboxDialog.close();
+      });
+    }
+
+    // Light dismiss for lightbox: close on backdrop click
+    lightboxDialog.addEventListener('click', (e) => {
+      const rect = lightboxDialog.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        lightboxDialog.close();
+      }
+    });
+  }
+
 });
