@@ -892,78 +892,236 @@ a:hover {
 }
 
 /* ==========================================================================
-   3. SECTION: ИЕРАРХИЯ / RANKS
+   3. SECTION: ПРОМОКОД / BONUS & REGISTRATION
    ========================================================================== */
 
-.ranks-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+.section-promo {
+  background: linear-gradient(180deg, #07090e 0%, #0d1017 50%, #07090e 100%);
+  border-top: 1px solid rgba(255, 183, 51, 0.15);
+  border-bottom: 1px solid rgba(255, 183, 51, 0.15);
 }
 
-.rank-card {
+.promo-card {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(32px, 5vw, 60px);
+  align-items: center;
   background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: 26px 20px;
+  border: 1px solid rgba(255, 183, 51, 0.3);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 44px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 183, 51, 0.1);
   position: relative;
-  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+.promo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff4d4f, #FFB733, transparent);
+}
+
+.promo-banner-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.promo-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.promo-card:hover .promo-banner-img {
+  transform: scale(1.03);
+}
+
+.promo-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+}
+
+.promo-server-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 183, 51, 0.4);
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--gold-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #55ff99;
+  box-shadow: 0 0 8px #55ff99;
+  animation: pulseDot 1.5s infinite;
+}
+
+.promo-info {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
-.rank-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 183, 51, 0.45);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+.promo-title {
+  font-family: var(--font-accent);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
 }
 
-.rank-featured {
-  border-color: rgba(255, 183, 51, 0.5);
-  background: linear-gradient(180deg, rgba(255, 183, 51, 0.12) 0%, rgba(18, 22, 34, 0.85) 100%);
+.gold-text {
+  color: var(--gold-accent);
+  text-shadow: 0 0 15px rgba(255, 183, 51, 0.4);
 }
 
-.rank-badge {
-  font-size: 9.5px;
+.promo-lead {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.promo-perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.perk-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.perk-box:hover {
+  background: rgba(255, 183, 51, 0.08);
+  border-color: rgba(255, 183, 51, 0.35);
+  transform: translateY(-2px);
+}
+
+.perk-icon {
+  font-size: 20px;
+}
+
+.perk-text strong {
+  display: block;
+  font-size: 13.5px;
+  color: #fff;
+}
+
+.perk-text span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-subtle);
+  line-height: 1.3;
+}
+
+.promo-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.promo-code-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  background: rgba(10, 13, 20, 0.9);
+  border: 1px dashed var(--gold-accent);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.promo-code-box:hover {
+  background: rgba(255, 183, 51, 0.15);
+  transform: scale(1.03);
+  border-style: solid;
+}
+
+.code-label {
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--gold-accent);
-  margin-bottom: 12px;
-  text-transform: uppercase;
+  color: var(--text-subtle);
+  letter-spacing: 0.08em;
 }
 
-.rank-crest {
-  font-size: 26px;
-  color: var(--gold-accent);
-  margin-bottom: 10px;
-  line-height: 1;
-}
-
-.rank-name {
+.code-val {
   font-family: var(--font-accent);
   font-size: 18px;
   font-weight: 800;
-  color: #fff;
-  margin: 0 0 6px 0;
-  letter-spacing: 0.06em;
+  color: var(--gold-accent);
+  letter-spacing: 0.12em;
 }
 
-.rank-role {
-  font-size: 12px;
-  color: var(--text-subtle);
-  margin: 0 0 16px 0;
+.copy-icon {
+  color: var(--gold-accent);
+  transition: transform 0.2s ease;
 }
 
-.rank-duties {
-  margin: 0;
-  padding-left: 16px;
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
+.promo-code-box:hover .copy-icon {
+  transform: rotate(15deg);
 }
 
-.rank-duties li {
-  margin-bottom: 8px;
+.promo-register-btn {
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff4d4f 0%, #d9363e 100%);
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(255, 77, 79, 0.4);
+}
+
+.promo-register-btn:hover {
+  background: linear-gradient(135deg, #ff6b6d 0%, #ff4d4f 100%);
+  box-shadow: 0 10px 30px rgba(255, 77, 79, 0.6);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .promo-card {
+    grid-template-columns: 1fr;
+  }
+  .promo-perks {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================

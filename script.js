@@ -324,7 +324,25 @@ ${staticId ? `🆔 **Static ID:** ${staticId}\n` : ''}━━━━━━━━�
   }
 
   // ------------------------------------------------------------------------
-  // 6. TOAST NOTIFICATION HELPER
+  // 6. PROMO CODE COPY INTERACTION
+  // ------------------------------------------------------------------------
+  const copyPromoBtn = document.getElementById('copy-promo-btn');
+  if (copyPromoBtn) {
+    copyPromoBtn.addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('CORTEZ').then(() => {
+          showToast('Промокод CORTEZ скопирован в буфер обмена! 👑');
+        }).catch(() => {
+          showToast('Промокод: CORTEZ');
+        });
+      } else {
+        showToast('Промокод: CORTEZ');
+      }
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 7. TOAST NOTIFICATION HELPER
   // ------------------------------------------------------------------------
   function showToast(message) {
     const toast = document.getElementById('toast');
