@@ -93,22 +93,12 @@ a:hover {
   flex-direction: column;
 }
 
-/* Fallback background behind the video */
-.video-fallback {
+/* Deep Obsidian Dark Background with subtle ambient spotlight */
+.hero-backdrop {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #0d1017 0%, #141826 45%, #1c2233 100%);
+  background: radial-gradient(circle at 50% 40%, #111522 0%, #080a10 55%, #030407 100%);
   z-index: 0;
-}
-
-/* Background video */
-.bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
 }
 
 /* Overlay 1: Bottom Fade (oklch prompt specs) */
@@ -468,7 +458,49 @@ a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: clamp(140px, 22vh, 220px) clamp(20px, 8vw, 120px) clamp(44px, 8vh, 72px);
+  padding: clamp(90px, 12vh, 140px) clamp(20px, 6vw, 80px) clamp(40px, 7vh, 64px);
+}
+
+/* Official Family Brand Art (CORTEZFAMQ) */
+.hero-brand-centerpiece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
+  width: 100%;
+}
+
+.hero-banner-img {
+  width: clamp(280px, 52vw, 680px);
+  max-width: 95vw;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 35px rgba(255, 183, 51, 0.16)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+  transition: transform 0.4s ease, filter 0.4s ease;
+  animation: bannerGlow 5s ease-in-out infinite alternate;
+}
+
+.hero-brand-centerpiece:hover .hero-banner-img {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 50px rgba(255, 183, 51, 0.3)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+@keyframes bannerGlow {
+  0% { transform: scale(0.99); filter: drop-shadow(0 0 25px rgba(255, 183, 51, 0.12)); }
+  100% { transform: scale(1.015); filter: drop-shadow(0 0 45px rgba(255, 183, 51, 0.26)); }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* 6a. Star Ornament */

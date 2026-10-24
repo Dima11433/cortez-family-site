@@ -5,18 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. VIDEO AUTOPLAY GUARANTEE (Exact Prompt Requirements)
-  // ------------------------------------------------------------------------
-  const v = document.querySelector('video');
-  if (v) {
-    v.muted = true;
-    v.src = 'https://cdn.sceneai.art/Hero%20section%20video%20file%20(2)/1aafa16f-30a9-48c5-8964-78cffbad914e.mp4';
-    v.play().catch(() => {});
-    v.addEventListener('pause', () => v.play().catch(() => {}));
-  }
-
-  // ------------------------------------------------------------------------
-  // 2. SUBTLE FLOATING AMBIENT PARTICLES (CANVAS)
+  // 1. SUBTLE FLOATING AMBIENT PARTICLES (CANVAS)
   // ------------------------------------------------------------------------
   const canvas = document.getElementById('ambient-canvas');
   if (canvas) {
